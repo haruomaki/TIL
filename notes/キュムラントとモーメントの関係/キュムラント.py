@@ -1,8 +1,8 @@
 import sympy as sp
 
-N = 6  # 何次までやるか
+N = 9  # 何次までやるか
 mu = sp.symbols("mu0:%d" % (N + 1))
-# kappa = sp.symbols("kappa0:%d" % (N + 1))
+kappa = sp.symbols("kappa0:%d" % (N + 1))
 
 kappa_expr = [None] * (N + 1)
 kappa_expr[0] = 0
@@ -16,7 +16,9 @@ for n in range(1, N):
 
 
 # LaTeX出力
+sp.init_printing(order="rev-lex")
 print("\\begin{aligned}")
-for i in range(0, N + 1):
-    print(f"  \\kappa_{i} &=", sp.latex(kappa_expr[i]), "\\\\")
+for i in range(1, N + 1):
+    expr = kappa_expr[i].subs(mu[1], 0)
+    print(f"  {sp.latex(kappa[i])} &= {sp.latex(expr)} \\\\")
 print("\\end{aligned}")
