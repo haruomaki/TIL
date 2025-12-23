@@ -3,6 +3,7 @@ import sympy as sp
 N = 9  # 何次までやるか
 mu = sp.symbols("mu0:%d" % (N + 1))
 kappa = sp.symbols("kappa0:%d" % (N + 1))
+sigma = sp.symbols("sigma")
 
 kappa_expr = [None] * (N + 1)
 kappa_expr[0] = 0
@@ -20,5 +21,15 @@ sp.init_printing(order="rev-lex")
 print("\\begin{aligned}")
 for i in range(1, N + 1):
     expr = kappa_expr[i].subs(mu[1], 0)
+    print(f"  {sp.latex(kappa[i])} &= {sp.latex(expr)} \\\\")
+print("\\end{aligned}")
+
+# 標準化キュムラントも出力
+sp.init_printing(order="rev-lex")
+print("\\begin{aligned}")
+for i in range(1, N + 1):
+    expr = kappa_expr[i].subs(mu[1], 0)
+    expr = expr.subs(mu[2], sigma**2) / sigma**i
+    expr = expr.expand()
     print(f"  {sp.latex(kappa[i])} &= {sp.latex(expr)} \\\\")
 print("\\end{aligned}")
