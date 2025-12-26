@@ -6,6 +6,8 @@
 
 微小時間 $\Delta t = 1/n$ ごとに、確率 $p = λ/n$ で「起こるか起こらないか」を判定する**ベルヌーイ試行を無数に繰り返す**。
 
+### 発生回数の分布
+
 単位時間の間に何回イベントが生起するか（$k$ 回起きる確率）を考える。
 
 ```math
@@ -19,9 +21,7 @@ P(X=k) &= \binom{n}{k} p^k (1-p)^{n-k} \\
 ベルヌーイ試行の連続であることから
 
 ```math
-\begin{equation}
 X =Y_1 + Y_2 + \cdots + Y_n
-\end{equation}
 ```
 
 ```math
@@ -36,10 +36,10 @@ X =Y_1 + Y_2 + \cdots + Y_n
 ```math
 \begin{aligned}
 φ_X(t) &= \prod_i φ_{Y_i}(t) \\
-       &= \left( 1 - p + pe^{it} \right)^n \\
-       &= \left( 1 + p \left( e^{it} - 1 \right) \right)^n \\
-       &= \left( 1 + \frac{λ \left( e^{it} - 1 \right)}{n} \right)^n \\
-       &\xrightarrow{n→∞} e^{λ \left( e^{it} - 1 \right)} \\
+       &= (1 - p + pe^{it})^n \\
+       &= \left( 1 + p(e^{it} - 1) \right)^n \\
+       &= \left( 1 + \frac{λ(e^{it} - 1)}{n} \right)^n \\
+       &\xrightarrow{n→∞} e^{λ(e^{it} - 1)} \\
 \end{aligned}
 ```
 
@@ -49,6 +49,23 @@ $n→∞$ のときに続けて計算していくと、$e^x$ のマクローリ�
 \begin{aligned}
 φ_X(t) &= e^{-λ} \cdot e^{λe^{it}} \\
        &= e^{-λ} \cdot \sum_{m=0}^∞ \frac{(λe^{it})^m}{m!} \\
-       &= e^{-λ} \cdot \sum_{m=0}^∞ \frac{\left(λe^{it}\right)^m}{m!} \\
+       &= e^{-λ} \cdot \sum_{m=0}^∞ \frac{λ^m}{m!} e^{itm} \\
+       &= \sum_{m=0}^∞ e^{itm} \left( e^{-λ} \frac{λ^m}{m!} \right) \\
 \end{aligned}
 ```
+
+離散分布の特性関数の一般形と比較することで
+
+```math
+φ_X(t) = 𝔼[e^{itX}] = \sum_{k=0}^∞ e^{itk} P(X=k)
+```
+
+```math
+\begin{equation}
+\therefore P(X=k) = e^{-λ} \frac{λ^k}{k!}
+\end{equation}
+```
+
+が得られる。
+
+### 発生間隔の分布
