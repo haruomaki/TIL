@@ -69,3 +69,23 @@ $n→∞$ のときに続けて計算していくと、$e^x$ のマクローリ�
 が得られる。
 
 ### 発生間隔の分布
+
+前回のイベントからちょうど時間tが経過して次のイベントが発生する確率を考える。
+
+```math
+\begin{aligned}
+I(t) &= (1-p)^{t/Δt-1} p \\
+     &= \left( 1-\frac{λ}{n} \right)^{tn-1} \frac{λ}{n} \\
+     &= \left( 1-\frac{λ}{n} \right)^{tn} \frac{\frac{λ}{n}}{1-\frac{λ}{n}} \\
+\end{aligned}
+```
+
+確率は0に収束するため、代わりに密度を考える。（確率＝短冊の面積、密度＝短冊の高さ）
+
+```math
+\begin{aligned}
+f_T(t) &= \lim_{n→∞} \frac{I(t)}{Δt} \\
+       &= \lim_{n→∞} \left( 1-\frac{λ}{n} \right)^{tn} \frac{λ}{1-\frac{λ}{n}} \\
+       &= λe^{-λt}
+\end{aligned}
+```
