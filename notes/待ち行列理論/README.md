@@ -74,9 +74,8 @@ $n→∞$ のときに続けて計算していくと、$e^x$ のマクローリ�
 
 ```math
 \begin{aligned}
-I(t) &= (1-p)^{t/Δt-1} p \\
-     &= \left( 1-\frac{λ}{n} \right)^{tn-1} \frac{λ}{n} \\
-     &= \left( 1-\frac{λ}{n} \right)^{tn} \frac{\frac{λ}{n}}{1-\frac{λ}{n}} \\
+I(t) &= (1-p)^{t/Δt} p \\
+     &= \left( 1-\frac{λ}{n} \right)^{tn} \frac{λ}{n} \\
 \end{aligned}
 ```
 
@@ -85,7 +84,7 @@ I(t) &= (1-p)^{t/Δt-1} p \\
 ```math
 \begin{aligned}
 f_T(t) &= \lim_{n→∞} \frac{I(t)}{Δt} \\
-       &= \lim_{n→∞} \left( 1-\frac{λ}{n} \right)^{tn} \frac{λ}{1-\frac{λ}{n}} \\
+       &= \lim_{n→∞} \left( 1-\frac{λ}{n} \right)^{tn} λ \\
        &= λe^{-λt}
 \end{aligned}
 ```
