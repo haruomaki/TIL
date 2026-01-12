@@ -11,18 +11,10 @@ tail -n +2 "$INPUT" | while IFS=',' read -r index disc title artist url llfans; 
         -f "bestaudio[ext=m4a]" \
         --embed-thumbnail \
         --embed-metadata \
-        -o "$OUTDIR/$index.%(ext)s" \
+        --postprocessor-args "ffmpeg:
+            -metadata album_artist=\"μ's\"
+            -metadata track=$index
+        " \
+        -o "$OUTDIR/$index %(title)s.%(ext)s" \
         "$url"
-    # yt-dlp \
-    #     -f "bestaudio[ext=m4a]" \
-    #     --embed-thumbnail \
-    #     --add-metadata \
-    #     # --metadata "title=$title" \
-    #     --metadata "artist=$artist" \
-    #     # --metadata "album_artist=μs" \
-    #     # --metadata "tracknumber=$index" \
-    #     # --metadata "album=\"μ's Memorial CD-BOX「Complete BEST BOX」\"" \
-    #     -o "$OUTDIR/$index.%(ext)s" \
-    #     "$url"
-
 done
