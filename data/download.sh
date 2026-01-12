@@ -5,7 +5,7 @@ OUTDIR="/mnt/c/Users/alex/Music/μ's Memorial CD-BOX「Complete BEST BOX」"
 
 mkdir -p "$OUTDIR"
 
-tail -n +2 "$INPUT" | while IFS=',' read -r index disc title artist url llfans; do
+tail -n +2 "$INPUT" | while IFS=',' read -r index disc title artist date url llfans; do
     echo "■■■■■■ ダウンロード $title ■■■■■■"
     yt-dlp \
         -f "bestaudio[ext=m4a]" \
@@ -15,7 +15,7 @@ tail -n +2 "$INPUT" | while IFS=',' read -r index disc title artist url llfans; 
             -metadata album_artist=\"μ's\"
             -metadata track=$index/118
             -metadata disc=$disc/13
-            -metadata date=2015
+            -metadata date=$date
         " \
         -o "$OUTDIR/$index %(title)s.%(ext)s" \
         "$url"
