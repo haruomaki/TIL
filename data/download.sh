@@ -13,7 +13,9 @@ tail -n +2 "$INPUT" | while IFS=',' read -r index disc title artist url llfans; 
         --embed-metadata \
         --postprocessor-args "ffmpeg:
             -metadata album_artist=\"μ's\"
-            -metadata track=$index
+            -metadata track=$index/118
+            -metadata disc=$disc/13
+            -metadata date=2015
         " \
         -o "$OUTDIR/$index %(title)s.%(ext)s" \
         "$url"
