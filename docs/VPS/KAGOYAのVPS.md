@@ -28,9 +28,7 @@ ssh -i "C:\Users\alex\.ssh\toyohimeVPS" ubuntu@133.***.***.***
 
 ```config
 Host toyohime
-    HostName [VPSのIPアドレス]
-    User [ユーザー名]
-    IdentityFile C:\Users\[ユーザー名]\.ssh\toyohimeVPS
+    HostName 133.***.***.***
+    User ubuntu
+    IdentityFile C:\Users\alex\.ssh\***のログイン用認証キー.key
 ```
-
-TODO: ユーザ一覧確認方法など、よくあるコマンド一覧を作成する。
