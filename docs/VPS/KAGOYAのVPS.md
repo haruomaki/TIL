@@ -39,6 +39,17 @@ Host toyohime
 
 AレコードをVPSサーバのものに設定する。
 
+```dns
+$TTL 300
+@ IN SOA ns1.freens.jp. root.ns1.freens.jp. (2601311827 10800 3600 604800 86400)
+;
+ IN NS ns1.freens.jp.
+ IN MX 0 haruomaki.jp.
+ IN TXT "v=spf1 mx ~all"
+ IN A 133.18.104.232
+www IN CNAME haruomaki.jp.
+```
+
 ```pwsh
 ❯ nslookup haruomaki.jp
 サーバー:  UnKnown
@@ -49,4 +60,14 @@ Address:  240b:12:47e2:3000:1266:82ff:fea6:956c
 Address:  133.18.***.***
 ```
 
-応答が返ってくれば、インターネット上でDNSが機能している証拠。
+応答が返ってくれば、インターネット上でDNSが機能していることが確かめられる。
+
+### 余談：DNSレコード解説
+
+- `A` IPv4アドレス
+- `AAAA` IPv6アドレス
+- `MX` メールサーバのホスト名
+- `CNAME` **ドメイン名のエイリアス**を設定する。`www.hoge.com`を`hoge.com`に転送するなど
+- `NS` 「自分は知らないけどこの人なら知ってるはずだよ」
+- `TXT` 拡張情報
+- `SOA` メタ情報

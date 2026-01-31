@@ -37,10 +37,14 @@ NR==FNR {
 ' /etc/shadow /etc/passwd
 ```
 
-## ssh
+## SSH
 
 ログイン試行等のログ監視
 
 ```bash
-sudo journalctl -u ssh | less
+# 失敗
+sudo journalctl -u ssh | grep "Failed password for invalid user" | less
+
+# 成功
+sudo journalctl -u ssh | grep "Accepted" | less
 ```
