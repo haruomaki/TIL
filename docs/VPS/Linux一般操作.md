@@ -36,3 +36,11 @@ NR==FNR {
 }
 ' /etc/shadow /etc/passwd
 ```
+
+## ssh
+
+ログイン試行等のログ監視
+
+```bash
+sudo journalctl -u ssh | less
+```

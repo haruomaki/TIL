@@ -32,3 +32,21 @@ Host toyohime
     User ubuntu
     IdentityFile C:\Users\alex\.ssh\***のログイン用認証キー.key
 ```
+
+## ドメイン取得
+
+レジストラは[adm.jp](https://adm.jp)、DNSホスティングは抱き合わせの[FREENS.JP](https://freens.jp)で行う。
+
+AレコードをVPSサーバのものに設定する。
+
+```pwsh
+❯ nslookup haruomaki.jp
+サーバー:  UnKnown
+Address:  240b:12:47e2:3000:1266:82ff:fea6:956c
+
+権限のない回答:
+名前:    haruomaki.jp
+Address:  133.18.***.***
+```
+
+応答が返ってくれば、インターネット上でDNSが機能している証拠。
