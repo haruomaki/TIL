@@ -48,3 +48,27 @@ sudo journalctl -u ssh | grep "Failed password for invalid user" | less
 # 成功
 sudo journalctl -u ssh | grep "Accepted" | less
 ```
+
+## GPG
+
+鍵の作成。（メインキーと署名用のサブキー）
+
+```bash
+gpg --full-generate-key
+```
+
+- 有効期限 → 1y（1年。後で延長できる）
+- 名前 → GitHubに表示されても良い名前
+- メール → GitHubに登録しているメール
+
+```bash
+# 確認
+gpg --list-secret-keys --keyid-format=long
+```
+
+署名と検証。
+
+```bash
+gpg --armor --detach-sign README.md
+gpg --verify README.md.asc README.md
+```

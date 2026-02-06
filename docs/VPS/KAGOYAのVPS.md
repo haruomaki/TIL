@@ -35,7 +35,7 @@ Host toyohime
 
 ## ドメイン取得
 
-レジストラは[adm.jp](https://adm.jp)、DNSホスティングは抱き合わせの[FREENS.JP](https://freens.jp)で行う。
+レジストラは[adm.jp](https://adm.jp)、DNSホスティングは ~~抱き合わせの[FREENS.JP](https://freens.jp)で行う。~~ KAGOYAで行う。AAAAレコードや冗長設定（ns0とns1）が可能なため。
 
 AレコードをVPSサーバのものに設定する。
 
@@ -71,3 +71,7 @@ Address:  133.18.***.***
 - `NS` 「自分は知らないけどこの人なら知ってるはずだよ」
 - `TXT` 拡張情報
 - `SOA` メタ情報
+
+その他
+
+- `PTR` 逆引きで返される値。`A`などとは違い、IPアドレスの管理者が持つDNSに設定される。
