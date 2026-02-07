@@ -64,6 +64,9 @@ gpg --full-generate-key
 ```bash
 # 確認
 gpg --list-secret-keys --keyid-format=long
+
+# [追記] パスフレーズの無効化
+gpg --pinentry-mode loopback --passwd KEY
 ```
 
 署名と検証。
@@ -71,4 +74,12 @@ gpg --list-secret-keys --keyid-format=long
 ```bash
 gpg --armor --detach-sign README.md
 gpg --verify README.md.asc README.md
+```
+
+Gitのコミット署名。[GitHubの設定画面](https://github.com/settings/gpg/new)から。
+
+```bash
+gpg --armor --export you@example.com
+git config --global user.signingkey BBBBBBBBBBBBBBBB # gitに使う鍵を教える
+git config --global commit.gpgsign true # GPG署名をデフォルトでON
 ```
